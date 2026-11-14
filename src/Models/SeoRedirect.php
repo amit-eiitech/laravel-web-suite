@@ -1,0 +1,21 @@
+<?php
+
+namespace Eii\WebSuite\Models;
+
+use Eii\WebSuite\Enums\SeoRedirectStatus;
+use Illuminate\Database\Eloquent\Model;
+
+class SeoRedirect extends Model
+{
+    protected $table = 'seo_redirects';
+
+    protected $guarded = [];
+
+    protected function casts(): array
+    {
+        return [
+            'is_active' => 'boolean',
+            'status_code' => SeoRedirectStatus::class,
+        ];
+    }
+}
