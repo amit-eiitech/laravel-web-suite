@@ -1,15 +1,15 @@
 <?php
 
 return [
-    'modules' => [
-        'news' => true,
-        'events' => true,
-        'recruitment' => true,
-        'faqs' => true,
-        'blog' => false,
-        'contact' => true,
-        'seo' => true,
-    ],
-
-    'filament_resources' => (bool) env('EII_FILAMENT_RESOURCES', true),
+    /*
+    |--------------------------------------------------------------------------
+    | Eii Web Suite Configuration
+    |--------------------------------------------------------------------------
+    |
+    | Module selection and Filament UI resources are configured in your
+    | Filament panel provider (e.g. AdminPanelProvider) using:
+    |
+    | ->plugin(WebSuitePlugin::make())
+    |
+    */
 ];

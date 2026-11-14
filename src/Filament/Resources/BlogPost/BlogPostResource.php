@@ -33,19 +33,7 @@ class BlogPostResource extends Resource
 
     protected static ?int $navigationSort = 3;
 
-    public static function shouldRegisterNavigation(): bool
-    {
-        return config('eii-web-suite.filament_resources', true)
-            && config('eii-web-suite.modules.blog', false)
-            && parent::shouldRegisterNavigation();
-    }
 
-    public static function canViewAny(): bool
-    {
-        return config('eii-web-suite.filament_resources', true)
-            && config('eii-web-suite.modules.blog', false)
-            && parent::canViewAny();
-    }
 
     public static function form(Schema $schema): Schema
     {

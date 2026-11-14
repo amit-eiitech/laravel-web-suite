@@ -25,7 +25,7 @@ class InstallCommand extends Command
 
         $this->newLine();
         $this->components->info('Eii Web Suite installed successfully!');
-        $this->line('Filament UI is controlled by config("eii-web-suite.filament_resources") / env EII_FILAMENT_RESOURCES (default: enabled).');
+        $this->line('Register WebSuitePlugin::make() in your Filament AdminPanelProvider to enable the administration UI.');
 
         return self::SUCCESS;
     }

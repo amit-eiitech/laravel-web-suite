@@ -23,15 +23,15 @@ class WebSuitePlugin implements Plugin
 
     public function __construct()
     {
-        $this->includeNews = WebSuite::isModuleEnabled('news', true);
-        $this->includeEvents = WebSuite::isModuleEnabled('events', true);
-        $this->includeRecruitment = WebSuite::isModuleEnabled('recruitment', true);
-        $this->includeBlog = WebSuite::isModuleEnabled('blog', false);
-        $this->includeFaqs = WebSuite::isModuleEnabled('faqs', true);
-        $this->includeCategories = WebSuite::isModuleEnabled('categories', true);
-        $this->includeContact = WebSuite::isModuleEnabled('contact', true);
-        $this->includeSeo = WebSuite::isModuleEnabled('seo', true);
-        $this->includeSettings = WebSuite::areFilamentResourcesEnabled();
+        $this->includeNews = true;
+        $this->includeEvents = true;
+        $this->includeRecruitment = true;
+        $this->includeBlog = false;
+        $this->includeFaqs = true;
+        $this->includeCategories = true;
+        $this->includeContact = true;
+        $this->includeSeo = true;
+        $this->includeSettings = true;
     }
 
     /**
@@ -327,10 +327,6 @@ class WebSuitePlugin implements Plugin
             return $this->customResources;
         }
 
-        if (! WebSuite::areFilamentResourcesEnabled()) {
-            return [];
-        }
-
         return array_values(array_filter([
             $this->includeNews ? \Eii\WebSuite\Filament\Resources\News\NewsResource::class : null,
             $this->includeEvents ? \Eii\WebSuite\Filament\Resources\Event\EventResource::class : null,
@@ -354,7 +350,7 @@ class WebSuitePlugin implements Plugin
             return $this->customPages;
         }
 
-        if (! $this->includeSettings || ! WebSuite::areFilamentResourcesEnabled()) {
+        if (! $this->includeSettings) {
             return [];
         }
 

@@ -165,7 +165,7 @@ Included in this scaffold:
 - Initial content, contact, and SEO migrations.
 - Eloquent models and basic relationships.
 - Filament 5 Plugin (`WebSuitePlugin`) with per-module toggling.
-- `WebSuite` helper class for config-driven resource/page discovery.
+- `WebSuite` helper class for resource/page discovery.
 - Complete Filament 5 resources: News, Events, Job Openings, Blog Posts, FAQs, Categories, Contact Forms, Contact Submissions, SEO Metadata, SEO Redirects.
 - Filament 5 custom settings pages: General, Company, Contact, Social, Localization, SEO, Notification.
 - Full product plan in `PLAN.md`.

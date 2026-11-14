@@ -23,27 +23,13 @@ class SeoSettings extends Page implements HasSchemas
 
     protected static ?string $navigationLabel = 'SEO Settings';
 
-    protected static ?string $title = 'Contact Settings';
+    protected static ?string $title = 'SEO Settings';
 
     protected static string | \UnitEnum | null $navigationGroup = 'Web Suite Settings';
 
     protected static ?int $navigationSort = 6;
 
     protected string $view = 'eii-web-suite::filament.pages.seo-settings';
-
-    public static function shouldRegisterNavigation(): bool
-    {
-        return config('eii-web-suite.filament_resources', true)
-            && config('eii-web-suite.modules.seo', true)
-            && parent::shouldRegisterNavigation();
-    }
-
-    public static function canAccess(): bool
-    {
-        return config('eii-web-suite.filament_resources', true)
-            && config('eii-web-suite.modules.seo', true)
-            && parent::canAccess();
-    }
 
     public ?array $data = [];
 

@@ -28,19 +28,7 @@ class ContactSettings extends Page implements HasSchemas
 
     protected string $view = 'eii-web-suite::filament.pages.contact-settings';
 
-    public static function shouldRegisterNavigation(): bool
-    {
-        return config('eii-web-suite.filament_resources', true)
-            && config('eii-web-suite.modules.contact', true)
-            && parent::shouldRegisterNavigation();
-    }
 
-    public static function canAccess(): bool
-    {
-        return config('eii-web-suite.filament_resources', true)
-            && config('eii-web-suite.modules.contact', true)
-            && parent::canAccess();
-    }
 
     public ?array $data = [];
 
