@@ -5,9 +5,9 @@ namespace Eii\WebSuite\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class ContactSubmission extends Model
+class FormSubmission extends Model
 {
-    protected $table = 'contact_submissions';
+    protected $table = 'form_submissions';
 
     protected $guarded = [];
 
@@ -18,6 +18,6 @@ class ContactSubmission extends Model
 
     public function form(): BelongsTo
     {
-        return $this->belongsTo(ContactForm::class, 'contact_form_id');
+        return $this->belongsTo(Form::class, 'form_id');
     }
 }

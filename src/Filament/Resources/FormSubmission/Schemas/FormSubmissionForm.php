@@ -1,7 +1,8 @@
 <?php
 
-namespace Eii\WebSuite\Filament\Resources\ContactSubmission\Schemas;
+namespace Eii\WebSuite\Filament\Resources\FormSubmission\Schemas;
 
+use Eii\WebSuite\Enums\FormSubmissionStatus;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Select;
@@ -9,31 +10,27 @@ use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
-class ContactSubmissionForm
+class FormSubmissionForm
 {
     public static function configure(Schema $schema): Schema
     {
         return $schema
             ->components([
-                Section::make('Inquiry Status & Handling')
+                Section::make('Submission Status & Handling')
                     ->description('Status and triage information for this received message')
+                    ->columnSpanFull()
                     ->schema([
-                        Select::make('contact_form_id')
+                        Select::make('form_id')
                             ->relationship('form', 'name')
                             ->disabled()
-                            ->label('Contact Form')
+                            ->label('Form')
                             ->helperText('Form from which this message originated'),
 
                         Select::make('status')
-                            ->options([
-                                'new' => 'New',
-                                'read' => 'Read',
-                                'replied' => 'Replied',
-                                'archived' => 'Archived',
-                            ])
-                            ->default('new')
+                            ->options(FormSubmissionStatus::class)
+                            ->default(FormSubmissionStatus::New)
                             ->required()
-                            ->helperText('Update status as you process this customer inquiry'),
+                            ->helperText('Update status as you process this submission'),
 
                         DateTimePicker::make('handled_at')
                             ->native(false)
@@ -46,6 +43,7 @@ class ContactSubmissionForm
                     ])->columns(2),
 
                 Section::make('Submitted Payload')
+                    ->columnSpanFull()
                     ->description('User-submitted form fields and responses')
                     ->schema([
                         KeyValue::make('data')

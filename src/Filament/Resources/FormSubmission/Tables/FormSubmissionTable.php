@@ -1,7 +1,8 @@
 <?php
 
-namespace Eii\WebSuite\Filament\Resources\ContactSubmission\Tables;
+namespace Eii\WebSuite\Filament\Resources\FormSubmission\Tables;
 
+use Eii\WebSuite\Enums\FormSubmissionStatus;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -9,7 +10,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 
-class ContactSubmissionTable
+class FormSubmissionTable
 {
     public static function configure(Table $table): Table
     {
@@ -29,13 +30,8 @@ class ContactSubmissionTable
 
                 TextColumn::make('status')
                     ->badge()
-                    ->color(fn(string $state): string => match ($state) {
-                        'new' => 'danger',
-                        'read' => 'info',
-                        'replied' => 'success',
-                        'archived' => 'gray',
-                        default => 'gray',
-                    })
+                    ->formatStateUsing(fn(string $state): string => FormSubmissionStatus::from($state)->getLabel())
+                    ->color(fn(string $state): string|array|null => FormSubmissionStatus::from($state)->getColor())
                     ->sortable(),
 
                 TextColumn::make('created_at')
@@ -57,15 +53,10 @@ class ContactSubmissionTable
             ->defaultSort('created_at', 'desc')
             ->filters([
                 SelectFilter::make('status')
-                    ->options([
-                        'new' => 'New',
-                        'read' => 'Read',
-                        'replied' => 'Replied',
-                        'archived' => 'Archived',
-                    ]),
-                SelectFilter::make('contact_form_id')
+                    ->options(FormSubmissionStatus::class),
+                SelectFilter::make('form_id')
                     ->relationship('form', 'name')
-                    ->label('Contact Form'),
+                    ->label('Form'),
             ])
             ->recordActions([
                 EditAction::make(),

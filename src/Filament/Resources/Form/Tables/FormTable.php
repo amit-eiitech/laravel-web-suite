@@ -1,6 +1,6 @@
 <?php
 
-namespace Eii\WebSuite\Filament\Resources\ContactForm\Tables;
+namespace Eii\WebSuite\Filament\Resources\Form\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -10,7 +10,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 
-class ContactFormTable
+class FormTable
 {
     public static function configure(Table $table): Table
     {

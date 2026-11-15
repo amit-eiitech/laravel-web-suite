@@ -75,17 +75,20 @@ class SeoMetadataForm
                     ->columnSpanFull()
                     ->schema([
                         TextInput::make('og_title')
+                            ->label('OG Title')
                             ->maxLength(255)
                             ->columnSpanFull()
                             ->helperText('Open Graph title (og:title)'),
 
                         Textarea::make('og_description')
+                            ->label('OG Description')
                             ->maxLength(65535)
                             ->rows(3)
                             ->columnSpanFull()
                             ->helperText('Open Graph description (og:description)'),
 
                         FileUpload::make('og_image')
+                            ->label('OG Image')
                             ->image()
                             ->directory('seo')
                             ->columnSpanFull()

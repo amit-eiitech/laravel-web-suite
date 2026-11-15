@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('contact_forms', function (Blueprint $table) {
+        Schema::create('forms', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
@@ -17,15 +17,16 @@ return new class extends Migration {
             $table->timestamps();
         });
 
-        Schema::create('contact_submissions', function (Blueprint $table) {
+        Schema::create('form_submissions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('contact_form_id')->nullable()->constrained('contact_forms')->nullOnDelete();
+            $table->foreignId('form_id')->nullable()->constrained('forms')->nullOnDelete();
             $table->json('data');
             $table->string('status')->default('new')->index();
             $table->string('ip_hash', 64)->nullable();
             $table->timestamp('handled_at')->nullable();
             $table->timestamps();
         });
+
 
         Schema::create('seo_metadata', function (Blueprint $table) {
             $table->id();
@@ -57,7 +58,7 @@ return new class extends Migration {
     {
         Schema::dropIfExists('seo_redirects');
         Schema::dropIfExists('seo_metadata');
-        Schema::dropIfExists('contact_submissions');
-        Schema::dropIfExists('contact_forms');
+        Schema::dropIfExists('form_submissions');
+        Schema::dropIfExists('forms');
     }
 };

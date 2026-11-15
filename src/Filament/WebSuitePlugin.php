@@ -334,8 +334,8 @@ class WebSuitePlugin implements Plugin
             $this->includeBlog ? \Eii\WebSuite\Filament\Resources\BlogPost\BlogPostResource::class : null,
             $this->includeFaqs ? \Eii\WebSuite\Filament\Resources\Faq\FaqResource::class : null,
             $this->includeCategories ? \Eii\WebSuite\Filament\Resources\Category\CategoryResource::class : null,
-            $this->includeContact ? \Eii\WebSuite\Filament\Resources\ContactForm\ContactFormResource::class : null,
-            $this->includeContact ? \Eii\WebSuite\Filament\Resources\ContactSubmission\ContactSubmissionResource::class : null,
+            $this->includeContact ? \Eii\WebSuite\Filament\Resources\Form\FormResource::class : null,
+            $this->includeContact ? \Eii\WebSuite\Filament\Resources\FormSubmission\FormSubmissionResource::class : null,
             $this->includeSeo ? \Eii\WebSuite\Filament\Resources\SeoMetadata\SeoMetadataResource::class : null,
             $this->includeSeo ? \Eii\WebSuite\Filament\Resources\SeoRedirect\SeoRedirectResource::class : null,
         ]));
