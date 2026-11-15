@@ -18,6 +18,8 @@ class SeoMetadataForm
             ->components([
                 Section::make('Target')
                     ->description('Link SEO metadata to a route name for custom pages or to a model record for dynamic content')
+                    ->columnSpanFull()
+                    ->columns(3)
                     ->schema([
                         TextInput::make('route_name')
                             ->label('Route Name')
@@ -39,10 +41,11 @@ class SeoMetadataForm
                             ->dehydrated(false)
                             ->label('Record ID')
                             ->helperText('Set automatically from content record; read-only.'),
-                    ])->columns(3),
+                    ]),
 
                 Section::make('Standard Search Engine Metadata')
                     ->description('Meta tags consumed by search engine crawlers')
+                    ->columnSpanFull()
                     ->schema([
                         TextInput::make('title')
                             ->maxLength(255)
@@ -69,6 +72,7 @@ class SeoMetadataForm
 
                 Section::make('Open Graph & Social Sharing')
                     ->description('Metadata used when sharing links across social platforms')
+                    ->columnSpanFull()
                     ->schema([
                         TextInput::make('og_title')
                             ->maxLength(255)

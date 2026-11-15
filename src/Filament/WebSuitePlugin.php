@@ -354,14 +354,8 @@ class WebSuitePlugin implements Plugin
             return [];
         }
 
-        return array_values(array_filter([
-            \Eii\WebSuite\Filament\Pages\GeneralSettings::class,
-            \Eii\WebSuite\Filament\Pages\CompanySettings::class,
-            $this->includeContact ? \Eii\WebSuite\Filament\Pages\ContactSettings::class : null,
-            \Eii\WebSuite\Filament\Pages\SocialSettings::class,
-            \Eii\WebSuite\Filament\Pages\LocalizationSettings::class,
-            $this->includeSeo ? \Eii\WebSuite\Filament\Pages\SeoSettings::class : null,
-            \Eii\WebSuite\Filament\Pages\NotificationSettings::class,
-        ]));
+        return [
+            \Eii\WebSuite\Filament\Pages\Settings::class,
+        ];
     }
 }

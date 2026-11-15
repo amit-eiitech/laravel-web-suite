@@ -106,7 +106,7 @@ class EventForm
                             ]),
 
                         Tab::make('SEO')
-                            ->icon('heroicon-o-globe-alt')
+                            ->icon('heroicon-o-magnifying-glass')
                             ->schema([
                                 SeoMetadataSection::make()
                                     ->columnSpanFull(),
