@@ -15,6 +15,7 @@ use Eii\WebSuite\Policies\BlogPostPolicy;
 use Eii\WebSuite\Policies\EventPolicy;
 use Eii\WebSuite\Policies\JobPostPolicy;
 use Eii\WebSuite\Policies\NewsPolicy;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -49,11 +50,16 @@ class WebSuiteServiceProvider extends ServiceProvider
             __DIR__ . '/../config/eii-web-suite.php' => config_path('eii-web-suite.php'),
         ], 'eii-web-suite-config');
 
-        $router = $this->app['router'];
-        $router->aliasMiddleware('web-suite.seo', ResolveSeoMetadata::class);
-        $router->aliasMiddleware('web-suite.seo.redirect', HandleSeoRedirects::class);
-        $router->pushMiddlewareToGroup('web', HandleSeoRedirects::class);
-        $router->pushMiddlewareToGroup('web', ResolveSeoMetadata::class);
+        $this->app->booted(function (): void {
+            /** @var Router $router */
+            $router = $this->app['router'];
+
+            $router->aliasMiddleware('web-suite.seo', ResolveSeoMetadata::class);
+            $router->aliasMiddleware('web-suite.seo.redirect', HandleSeoRedirects::class);
+
+            $this->pushMiddlewareToGroupOnce($router, 'web', HandleSeoRedirects::class);
+            $this->pushMiddlewareToGroupOnce($router, 'web', ResolveSeoMetadata::class);
+        });
 
         if ($this->app->runningInConsole()) {
             $this->commands([
@@ -77,5 +83,16 @@ class WebSuiteServiceProvider extends ServiceProvider
         }
 
         Gate::policy($modelClass, $policyClass);
+    }
+
+    protected function pushMiddlewareToGroupOnce(Router $router, string $group, string $middleware): void
+    {
+        $existing = $router->getMiddlewareGroups()[$group] ?? [];
+
+        if (in_array($middleware, $existing, true)) {
+            return;
+        }
+
+        $router->pushMiddlewareToGroup($group, $middleware);
     }
 }

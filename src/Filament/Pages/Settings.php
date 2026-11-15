@@ -30,15 +30,15 @@ class Settings extends Page implements HasSchemas
 {
     use InteractsWithSchemas;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-cog-6-tooth';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-adjustments-horizontal';
 
-    protected static ?string $navigationLabel = 'Settings';
+    protected static ?string $navigationLabel = 'Web Suite Settings';
 
-    protected static ?string $title = 'Settings';
+    protected static ?string $title = 'Web Suite Settings';
 
-    protected static ?string $slug = 'settings';
+    protected static ?string $slug = 'web-suite-settings';
 
-    protected static string | \UnitEnum | null $navigationGroup = 'Web Suite Settings';
+    protected static string | \UnitEnum | null $navigationGroup = 'Settings';
 
     protected string $view = 'eii-web-suite::filament.pages.settings';
 

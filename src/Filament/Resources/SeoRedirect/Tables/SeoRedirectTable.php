@@ -70,10 +70,12 @@ class SeoRedirectTable
             ->recordActions([
                 EditAction::make(),
             ])
-            ->toolbarActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
-            ]);
+            ->toolbarActions(config('eii-web-suite.filament.show_bulk_actions', true)
+                ? [
+                    BulkActionGroup::make([
+                        DeleteBulkAction::make(),
+                    ]),
+                ]
+                : []);
     }
 }

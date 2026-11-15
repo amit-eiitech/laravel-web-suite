@@ -20,6 +20,7 @@ class WebSuitePlugin implements Plugin
     protected bool $includeContact = true;
     protected bool $includeSeo = true;
     protected bool $includeSettings = true;
+    protected bool $showBulkActions = true;
 
     public function __construct()
     {
@@ -32,6 +33,7 @@ class WebSuitePlugin implements Plugin
         $this->includeContact = true;
         $this->includeSeo = true;
         $this->includeSettings = true;
+        $this->showBulkActions = true;
     }
 
     /**
@@ -57,6 +59,8 @@ class WebSuitePlugin implements Plugin
 
     public function register(Panel $panel): void
     {
+        config(['eii-web-suite.filament.show_bulk_actions' => $this->showBulkActions]);
+
         $panel
             ->resources($this->getResources())
             ->pages($this->getPages());
@@ -227,6 +231,13 @@ class WebSuitePlugin implements Plugin
         return $this;
     }
 
+    public function withBulkActions(bool $condition = true): static
+    {
+        $this->showBulkActions = $condition;
+
+        return $this;
+    }
+
     // --- Fluent Negative Helpers ---
 
     public function withoutNews(bool $condition = true): static
@@ -288,6 +299,13 @@ class WebSuitePlugin implements Plugin
     public function withoutSettings(bool $condition = true): static
     {
         $this->includeSettings = ! $condition;
+
+        return $this;
+    }
+
+    public function withoutBulkActions(bool $condition = true): static
+    {
+        $this->showBulkActions = ! $condition;
 
         return $this;
     }

@@ -12,4 +12,8 @@ return [
     | ->plugin(WebSuitePlugin::make())
     |
     */
+
+    'filament' => [
+        'show_bulk_actions' => true,
+    ],
 ];
