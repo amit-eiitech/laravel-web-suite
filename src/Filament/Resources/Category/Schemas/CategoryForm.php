@@ -16,10 +16,13 @@ class CategoryForm
             ->components([
                 Section::make('Category Information')
                     ->description('Categorization taxonomies shared across content types')
+                    ->columns(2)
+                    ->columnSpanFull()
                     ->schema([
                         TextInput::make('name')
                             ->required()
                             ->maxLength(255)
+                            ->columnSpanFull()
                             ->helperText('Public category name, e.g. Corporate News, Product Launch, Company Events'),
 
                         TextInput::make('slug')
@@ -42,7 +45,7 @@ class CategoryForm
                             ->rows(3)
                             ->columnSpanFull()
                             ->helperText('Optional description displayed on the category archive page or in meta descriptions'),
-                    ])->columns(3),
+                    ]),
             ]);
     }
 }

@@ -15,8 +15,8 @@ class SeoRedirectForm
     {
         return $schema
             ->components([
-                Section::make('URL Mapping')
-                    ->description('Specify the incoming source route and its destination target')
+                Section::make('Redirect Rule')
+                    ->description('Description	Define the source path, destination target, HTTP response code, and whether this rule is active')
                     ->schema([
                         TextInput::make('source_path')
                             ->required()
@@ -30,11 +30,7 @@ class SeoRedirectForm
                             ->maxLength(255)
                             ->columnSpanFull()
                             ->helperText('Target relative path (e.g. /services) or external URL (e.g. https://partner.example.com)'),
-                    ]),
 
-                Section::make('HTTP Code & Activity')
-                    ->description('Set status response code and enable/disable the rule')
-                    ->schema([
                         Select::make('status_code')
                             ->options(SeoRedirectStatus::class)
                             ->default(SeoRedirectStatus::MovedPermanently->value)
@@ -45,7 +41,7 @@ class SeoRedirectForm
                             ->label('Redirect Active')
                             ->default(true)
                             ->helperText('When enabled, incoming requests matching the source path will be redirected'),
-                    ])->columns(2),
+                    ]),
             ]);
     }
 }

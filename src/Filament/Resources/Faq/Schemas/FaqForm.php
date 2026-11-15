@@ -31,9 +31,11 @@ class FaqForm
 
                 Section::make('Categorization & Ordering')
                     ->description('Organize FAQ display and ordering on the website')
+                    ->columns(2)
                     ->schema([
                         TextInput::make('category')
                             ->maxLength(255)
+                            ->columnSpanFull()
                             ->helperText('Topic grouping (e.g. Account, Billing, Services, Technical)'),
 
                         TextInput::make('sort_order')
@@ -45,8 +47,9 @@ class FaqForm
                         Toggle::make('is_published')
                             ->label('Visible to Public')
                             ->default(true)
+                            ->inline(false)
                             ->helperText('When enabled, this FAQ is published and visible on the website'),
-                    ])->columns(3),
+                    ]),
             ]);
     }
 }
