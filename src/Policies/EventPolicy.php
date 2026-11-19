@@ -12,6 +12,11 @@ class EventPolicy
         return true;
     }
 
+    public function view(Authenticatable $user, Event $post): bool
+    {
+        return true;
+    }
+
     public function update(Authenticatable $user, Event $post): bool
     {
         // Replace with your default rule; e.g., allow all Filament users:

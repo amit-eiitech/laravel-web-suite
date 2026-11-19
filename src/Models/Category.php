@@ -9,8 +9,12 @@ class Category extends Model
 {
     protected $table = 'categories';
 
-
-    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'slug',
+        'scope',
+        'description',
+    ];
 
     public function news(): MorphToMany
     {

@@ -9,7 +9,13 @@ class FormSubmission extends Model
 {
     protected $table = 'form_submissions';
 
-    protected $guarded = [];
+    protected $fillable = [
+        'form_id',
+        'data',
+        'status',
+        'ip_hash',
+        'handled_at',
+    ];
 
     protected function casts(): array
     {

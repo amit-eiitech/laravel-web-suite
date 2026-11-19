@@ -39,7 +39,6 @@ class JobPostTable
 
                 TextColumn::make('status')
                     ->badge()
-                    ->color(JobPostStatus::class)
                     ->sortable(),
 
                 TextColumn::make('application_closes_at')

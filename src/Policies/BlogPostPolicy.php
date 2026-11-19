@@ -12,6 +12,11 @@ class BlogPostPolicy
         return true;
     }
 
+    public function view(Authenticatable $user, BlogPost $post): bool
+    {
+        return true;
+    }
+
     public function update(Authenticatable $user, BlogPost $post): bool
     {
         // Replace with your default rule; e.g., allow all Filament users:

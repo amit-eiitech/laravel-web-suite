@@ -12,6 +12,11 @@ class NewsPolicy
         return true;
     }
 
+    public function view(Authenticatable $user, News $post): bool
+    {
+        return true;
+    }
+
     public function update(Authenticatable $user, News $post): bool
     {
         // Replace with your default rule; e.g., allow all Filament users:

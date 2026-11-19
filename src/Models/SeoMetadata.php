@@ -9,7 +9,18 @@ class SeoMetadata extends Model
 {
     protected $table = 'seo_metadata';
 
-    protected $guarded = [];
+    protected $fillable = [
+        'seoable_type',
+        'seoable_id',
+        'route_name',
+        'title',
+        'description',
+        'canonical_url',
+        'robots',
+        'og_title',
+        'og_description',
+        'og_image',
+    ];
 
     public function seoable(): MorphTo
     {

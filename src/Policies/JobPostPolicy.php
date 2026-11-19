@@ -12,6 +12,11 @@ class JobPostPolicy
         return true;
     }
 
+    public function view(Authenticatable $user, JobPost $post): bool
+    {
+        return true;
+    }
+
     public function update(Authenticatable $user, JobPost $post): bool
     {
         return true;

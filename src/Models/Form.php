@@ -9,7 +9,13 @@ class Form extends Model
 {
     protected $table = 'forms';
 
-    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'slug',
+        'fields',
+        'settings',
+        'is_active',
+    ];
 
     protected function casts(): array
     {

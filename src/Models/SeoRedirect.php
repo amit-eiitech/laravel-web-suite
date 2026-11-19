@@ -9,7 +9,12 @@ class SeoRedirect extends Model
 {
     protected $table = 'seo_redirects';
 
-    protected $guarded = [];
+    protected $fillable = [
+        'source_path',
+        'destination_url',
+        'status_code',
+        'is_active',
+    ];
 
     protected function casts(): array
     {

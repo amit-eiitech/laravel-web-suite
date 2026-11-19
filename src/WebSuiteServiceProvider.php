@@ -9,10 +9,12 @@ use Eii\WebSuite\Http\Middleware\HandleSeoRedirects;
 use Eii\WebSuite\Http\Middleware\ResolveSeoMetadata;
 use Eii\WebSuite\Models\BlogPost;
 use Eii\WebSuite\Models\Event;
+use Eii\WebSuite\Models\Faq;
 use Eii\WebSuite\Models\JobPost;
 use Eii\WebSuite\Models\News;
 use Eii\WebSuite\Policies\BlogPostPolicy;
 use Eii\WebSuite\Policies\EventPolicy;
+use Eii\WebSuite\Policies\FaqPolicy;
 use Eii\WebSuite\Policies\JobPostPolicy;
 use Eii\WebSuite\Policies\NewsPolicy;
 use Illuminate\Routing\Router;
@@ -74,6 +76,7 @@ class WebSuiteServiceProvider extends ServiceProvider
         $this->registerDefaultPolicy(Event::class, EventPolicy::class);
         $this->registerDefaultPolicy(BlogPost::class, BlogPostPolicy::class);
         $this->registerDefaultPolicy(JobPost::class, JobPostPolicy::class);
+        $this->registerDefaultPolicy(Faq::class, FaqPolicy::class);
     }
 
     protected function registerDefaultPolicy(string $modelClass, string $policyClass): void
