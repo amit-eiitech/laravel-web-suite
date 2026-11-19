@@ -2,7 +2,6 @@
 
 namespace Eii\WebSuite\Models;
 
-use Eii\FilamentAiAssistant\Models\Concerns\HasAiAssistantContext;
 use Eii\WebSuite\Enums\ContentStatus;
 use Eii\WebSuite\Models\Concerns\HasSeoMetadata;
 use Illuminate\Database\Eloquent\Model;
@@ -12,7 +11,6 @@ use Override;
 class News extends Model
 {
     use HasSeoMetadata;
-    use HasAiAssistantContext;
 
     protected $table = 'news';
 

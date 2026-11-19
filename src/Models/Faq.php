@@ -2,13 +2,10 @@
 
 namespace Eii\WebSuite\Models;
 
-use Eii\FilamentAiAssistant\Models\Concerns\HasAiAssistantContext;
 use Illuminate\Database\Eloquent\Model;
 
 class Faq extends Model
 {
-    use HasAiAssistantContext;
-
     protected $table = 'faqs';
 
     protected $fillable = [
